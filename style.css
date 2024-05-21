@@ -132,11 +132,12 @@ header h1 {
   cursor: pointer;
   border-radius: 15px;
 }
-.btn img {
-  width: 40%;
-}
+/* Gérer le focus et hover selon sur ordi our smartphone */
 .btn:hover, .btn:focus {
   outline: 2px solid var(--buttons-text);
+}
+.btn img {
+  width: 40%;
 }
 .btn-up {
   grid-column: 2 / 3;
