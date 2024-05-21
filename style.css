@@ -70,7 +70,7 @@ header h1 {
   color: var(--blue-cethi);
   text-align: center;
 }
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   header {
     padding: 20px 0;
   }
@@ -78,7 +78,7 @@ header h1 {
     font-size: var(--fs-32);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 320px) {
   header {
     padding: 5px 0;
     border-bottom: 4px solid var(--blue-cethi);
@@ -89,7 +89,7 @@ header h1 {
 }
 /* Discorver */
 .discover{
-  width: 400px;
+  max-width: 400px;
   margin: 0 auto;
   padding: 80px 0px;
   border-radius : 50% 50% 50% 50% / 11% 11% 11% 11%;
@@ -105,12 +105,13 @@ header h1 {
   /* Texte dans l'écran */
   color: var(--buttons-text);
   font-family: var(--hmi-font);
+  font-size: var(--fs-22);
 }
 .display ul li{
   list-style-type: none;
 }
 .keyboard {
-  width: 295px;
+  max-width: 295px;
   height: 305px;
   margin: 0 auto;
   border-radius : 50% 50% 50% 50% / 25% 25% 25% 25%;
@@ -161,16 +162,55 @@ header h1 {
   grid-column: 2 / 3;
   grid-row: 3;
 }
-@media (max-width: 768px) {
+@media (max-width: 450px) {
   .discover{
-    /* Faire en sorte que ça ne créer pas une marge bidon  */
-    scale: 80%;
-    transform-origin: top;
+    max-width: 300px;
+    padding: 60px 0px;
+  }
+  .display {
+    width: 135px;
+    height: 176px;
+    margin: 0 auto 41px;
+    font-size: var(--fs-18);
+  }
+  .keyboard {
+    max-width: 221px;
+    height: 229px;
+  }
+  .btn{
+    width: 50px;
+    height: 50px;
+  }
+  .btn-ok {
+    width: 60px;
+    height: 60px;
+    font-size: var(--fs-22);
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 320px) {
   .discover{
-    /* Faire en sorte que ça ne créer pas une marge bidon  */
-    scale: 70%;
+    max-width: 225px;
+    padding: 45px 0px;
+  }
+  .display {
+    width: 100px;
+    height: 132px;
+    margin: 0 auto 31px;
+    font-size: var(--fs-14);
+  }
+  .keyboard {
+    max-width: 166px;
+    height: 172px;
+  }
+  .btn{
+    width: 35px;
+    height: 35px;
+    border-radius: 10px;
+  }
+  .btn-ok {
+    width: 45px;
+    height: 45px;
+    font-size: var(--fs-18);
+  
   }
 }
