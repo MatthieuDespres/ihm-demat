@@ -8,16 +8,15 @@
 
 :root {
   /* Colors */
-  /* General */
   --blue-cethi: #265984;
+  --white: #f1f1f1;
 
-  /* HMI */
+  /* HMI Colors */
   --frame: #0A0A0A;
   --keyboard: #202020;
   --buttons: #111120;
   --buttons-text: #F5F5F5;
-  --display-off: #3C4144;
-  --display-on: #75756C;
+  --display: #3C4144;
 
   /* Active */
   --active-buttons: #111120;
@@ -57,11 +56,11 @@
 /* Global & utilities */
 body {
   font-family: var(--base-font);
+  background-color: var(--white);
 }
 
 /* Header */
 header {
-  height: 100px;
   border-bottom: 5px solid var(--blue-cethi);
   padding: 25px 0;
   margin-bottom: 50px;
@@ -73,33 +72,42 @@ header h1 {
 }
 @media (max-width: 768px) {
   header {
-    height: 75px;
     padding: 20px 0;
-    margin-bottom: 0px;
   }
   header h1 {
     font-size: var(--fs-32);
   }
 }
-
+@media (max-width: 400px) {
+  header {
+    padding: 5px 0;
+    border-bottom: 4px solid var(--blue-cethi);
+  }
+  header h1 {
+    font-size: var(--fs-26);
+  }
+}
 /* Discorver */
 .discover{
-  width: 396px;
+  width: 400px;
   margin: 0 auto;
-  padding: 83px 0;
+  padding: 80px 0px;
   border-radius : 50% 50% 50% 50% / 11% 11% 11% 11%;
   background-color: var(--frame);
 }
 .display {
   width: 180px;
-  height: 233px;
+  height: 235px;
   margin: 0 auto 55px;
-  background-color: var(--display-off);
+  background-color: var(--display);
   border-radius: 3px;
 
   /* Texte dans l'écran */
   color: var(--buttons-text);
   font-family: var(--hmi-font);
+}
+.display ul li{
+  list-style-type: none;
 }
 .keyboard {
   width: 295px;
@@ -114,18 +122,18 @@ header h1 {
   align-items: center;
 }
 .btn{
-  width: 63px;
-  height: 63px;
+  width: 65px;
+  height: 65px;
   background-color: var(--buttons);
   border: none;
   outline: none;
   cursor: pointer;
   border-radius: 15px;
-
-  /* Si les bouton ont des textes */
-  color: var(--buttons-text);
 }
-.btn:hover {
+.btn img {
+  width: 40%;
+}
+.btn:hover, .btn:focus {
   outline: 2px solid var(--buttons-text);
 }
 .btn-up {
@@ -141,6 +149,9 @@ header h1 {
   height: 80px;
   grid-column: 2 / 3;
   grid-row: 2;
+  font-size: var(--fs-26);
+  text-transform: uppercase;
+  color: var(--buttons-text);
 }
 .btn-menu {
   grid-column: 3 / 3;
@@ -153,6 +164,13 @@ header h1 {
 @media (max-width: 768px) {
   .discover{
     /* Faire en sorte que ça ne créer pas une marge bidon  */
-    scale: 75%;
+    scale: 80%;
+    transform-origin: top;
+  }
+}
+@media (max-width: 400px) {
+  .discover{
+    /* Faire en sorte que ça ne créer pas une marge bidon  */
+    scale: 70%;
   }
 }
