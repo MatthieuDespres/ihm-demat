@@ -10,6 +10,7 @@
   /* Colors */
   --blue-cethi: #265984;
   --white: #f1f1f1;
+  --black: #0f0f0f;
 
   /* HMI Colors */
   --frame: #0A0A0A;
@@ -17,6 +18,7 @@
   --buttons: #111120;
   --buttons-text: #F5F5F5;
   --display: #3C4144;
+  --title-background-color: #9ab3d2;
 
   /* Active */
   --active-buttons: #111120;
@@ -28,6 +30,7 @@
   --hmi-font: obvia, sans-serif;
 
   /* Font-size */
+  --fs-11: 0.69rem;
   --fs-12: 0.75rem;
   --fs-14: 0.875rem;
   --fs-16: 1rem;
@@ -102,14 +105,32 @@ header h1 {
   margin: 0 auto 55px;
   background-color: var(--display);
   border-radius: 3px;
+  padding: 3px;
 
   /* Texte dans l'écran */
-  color: var(--buttons-text);
+  color: var(--white);
   font-family: var(--hmi-font);
-  font-size: var(--fs-22);
+  text-align: center;
+  
 }
-.display ul li{
+.menu-title {
+  font-weight: 500;
+  font-size: var(--fs-20);
+  padding: 2px;
+  background-color: var(--title-background-color);
+}
+.menu-element{
   list-style-type: none;
+  font-size: var(--fs-20);
+  padding: 4px 2px;
+  font-weight: 200 ;
+}
+.menu-element.selected {
+  background-color: var(--white);
+  color: var(--black);
+}
+.menu-element:not(:last-child){
+  border-bottom: 1px solid var(--white);
 }
 .keyboard {
   max-width: 295px;
@@ -188,6 +209,14 @@ header h1 {
     height: 60px;
     font-size: var(--fs-22);
   }
+  .menu-title {
+    font-weight: 400;
+    font-size: var(--fs-14);
+  }
+  .menu-element{
+    font-size: var(--fs-14);
+    padding: 3px 2px;
+  }
 }
 @media (max-width: 320px) {
   .discover{
@@ -215,4 +244,17 @@ header h1 {
     font-size: var(--fs-18);
   
   }
+  .menu-title {
+    font-weight: 200;
+    font-size: var(--fs-11);
+  }
+  .menu-element{
+    font-size: var(--fs-11);
+    padding: 1.8px 2px;
+    font-weight: 100;
+  }
+}
+.water-drop {
+  margin-top: 25%;
+  width: 75%;
 }
