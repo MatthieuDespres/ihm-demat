@@ -151,7 +151,7 @@ header h1 {
   border-radius: 15px;
 }
 /* Gérer le focus et hover selon sur ordi our smartphone */
-.btn:hover, .btn:focus {
+.btn:hover {
   outline: 2px solid var(--buttons-text);
 }
 .btn img {
