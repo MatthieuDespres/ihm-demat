@@ -106,12 +106,9 @@ header h1 {
   background-color: var(--display);
   border-radius: 3px;
   padding: 3px;
-
-  /* Texte dans l'écran */
   color: var(--white);
   font-family: var(--hmi-font);
   text-align: center;
-  
 }
 .menu-title {
   font-weight: 500;
@@ -250,7 +247,7 @@ header h1 {
   }
   .menu-element{
     font-size: var(--fs-11);
-    padding: 1.8px 2px;
+    padding: 1.5px 2px;
     font-weight: 100;
   }
 }
