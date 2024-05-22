@@ -110,6 +110,11 @@ header h1 {
   font-family: var(--hmi-font);
   text-align: center;
 }
+.home-title {
+  font-weight: 500;
+  font-size: var(--fs-20);
+  padding: 2px;
+}
 .menu-title {
   font-weight: 500;
   font-size: var(--fs-20);
@@ -122,7 +127,7 @@ header h1 {
   padding: 4px 2px;
   font-weight: 200 ;
 }
-.menu-element.selected {
+.menu-element:nth-child(3){
   background-color: var(--white);
   color: var(--black);
 }
@@ -151,8 +156,10 @@ header h1 {
   border-radius: 15px;
 }
 /* Gérer le focus et hover selon sur ordi our smartphone */
-.btn:hover {
-  outline: 2px solid var(--buttons-text);
+@media (pointer:fine) {
+  .btn:hover, .btn:focus {
+    outline: 2px solid var(--buttons-text);
+  }
 }
 .btn img {
   width: 40%;
@@ -212,7 +219,7 @@ header h1 {
   }
   .menu-element{
     font-size: var(--fs-14);
-    padding: 3px 2px;
+    padding: 2px 2px;
   }
 }
 @media (max-width: 320px) {
@@ -225,6 +232,7 @@ header h1 {
     height: 132px;
     margin: 0 auto 31px;
     font-size: var(--fs-12);
+    padding: 1px;
   }
   .keyboard {
     max-width: 166px;
@@ -239,7 +247,6 @@ header h1 {
     width: 45px;
     height: 45px;
     font-size: var(--fs-18);
-  
   }
   .menu-title {
     font-weight: 200;
@@ -252,6 +259,6 @@ header h1 {
   }
 }
 .water-drop {
-  margin-top: 25%;
+  margin-top: 5%;
   width: 75%;
 }
