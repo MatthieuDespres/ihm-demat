@@ -121,7 +121,7 @@ header h1 {
   padding: 2px;
   background-color: var(--title-background-color);
 }
-.menu-element{
+.menu-element, .menu-element-empty{
   list-style-type: none;
   font-size: var(--fs-20);
   padding: 4px 2px;
@@ -131,7 +131,7 @@ header h1 {
   background-color: var(--white);
   color: var(--black);
 }
-.menu-element:not(:last-child){
+.menu-element:not(:last-of-type){
   border-bottom: 1px solid var(--white);
 }
 .keyboard {
