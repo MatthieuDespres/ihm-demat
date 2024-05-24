@@ -13,13 +13,13 @@ class Menu {
     itemSelectedByDefault
 
     // Currently selected item
-    itemSelected
+    selectedItem
 
     constructor(title, childsItems, itemSelectedByDefault) {
         this.title = title
         this.childsItems = childsItems
         this.itemSelectedByDefault = itemSelectedByDefault
-        this.itemSelected = this.itemSelectedByDefault
+        this.selectedItem = this.itemSelectedByDefault
     }
 
     // Return the html elements to show
@@ -29,7 +29,7 @@ class Menu {
         menuTitle.textContent = this.title
         const menuContainer = document.createElement("div")
         menuContainer.classList.add("menu-container")
-        for (let index = (this.itemSelected - 2); index <= (this.itemSelected + 3); index++) {
+        for (let index = (this.selectedItem - 2); index <= (this.selectedItem + 3); index++) {
             if (this.childsItems[index]) {
                 const menuItem = document.createElement("p")
                 menuItem.classList.add("menu-item")
@@ -45,18 +45,24 @@ class Menu {
         }
         return [menuTitle, menuContainer]
     }
+
+    // When we move the cursor on the top
     mooveUp(){
-        if(this.itemSelected > 0 ){
-            this.itemSelected -= 1
+        if(this.selectedItem > 0 ){
+            this.selectedItem -= 1
         }
     }
+
+    // When we move the cursor on the bottom
     mooveDown(){
-        if(this.itemSelected < (this.childsItems.length - 1)){
-            this.itemSelected += 1
+        if(this.selectedItem < (this.childsItems.length - 1)){
+            this.selectedItem += 1
         }
     }
+
+    // When we go to the parent menu or the home page we want reset de default position of selector
     resetSelectedItem() {
-        this.itemSelected = this.itemSelectedByDefault
+        this.selectedItem = this.itemSelectedByDefault
     }
 }
 export default Menu

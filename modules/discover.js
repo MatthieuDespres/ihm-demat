@@ -1,17 +1,22 @@
+/*
+    IMPORTS
+*/
 import Functionality from "./functionality.js"
 import Menu from "./menu.js"
+
 /*
     Class Discover :
     Manage the HMI
 */
 class Discover {
-    // Refers to the screen element of the dom
+    // DOM elements
     display
+   
 
     // Menu of discover
     mainMenu
 
-    //Home
+    //Home page
     home
 
     // Item actualy show on display
@@ -20,31 +25,31 @@ class Discover {
 
     constructor() {
         this.display = document.querySelector(".display")
-
         this.mainMenu = this.createMenu()
-
         this.home = new Functionality("Ven 11:23")
-
         this.itemShow = this.home
-
         this.show()
     }
 
-    // Show an element whether it is a feature or a menu
+    // Show a current item
     show() {
         this.clearDisplay()
         this.itemShow.getShowElements().forEach(element => {this.display.appendChild(element)});
     }
 
+    // When arrow up is pressed
     up() {
         this.itemShow.mooveUp()
         this.show()
     }
 
+    // When arrow down is pressed
     down() {
         this.itemShow.mooveDown()
         this.show()
     }
+
+    // When menu button is pressed
     menu() {
         if(this.itemShow === this.home) {
             this.itemShow = this.mainMenu
@@ -53,6 +58,8 @@ class Discover {
         }
         this.show()
     }
+
+    // When back button is pressed
     back() {
         if(this.itemShow !== this.home) {
             if(this.itemShow.constructor.name === "Menu") {
@@ -71,6 +78,8 @@ class Discover {
             this.show()
         }
     }
+
+    // When of menu is pressed
     ok(){
         if(this.itemShow.constructor.name === "Menu") {
             this.itemShow = this.openMenu()
@@ -82,9 +91,13 @@ class Discover {
     clearDisplay(){
         this.display.textContent = ""
     }
+
+    // When someon press ok on a submenu
     openMenu(){
-        return this.itemShow.childsItems[this.itemShow.itemSelected]   
+        return this.itemShow.childsItems[this.itemShow.selectedItem]   
     }
+
+    // Create home 
     createHome() {
         const homeTitle = document.createElement("h2")
         homeTitle.classList.add("home-title")
@@ -101,6 +114,7 @@ class Discover {
         this.display.appendChild(waterDropIMG)
     }
 
+    // Create the main menu
     createMenu() {
         const testElec = new Functionality("Test Appoint Élec")
         const testColdPAC = new Functionality("Test PAC en Froid")
@@ -143,6 +157,8 @@ class Discover {
         const menu = new Menu("Menu", [consumption,absence,boost,instructionsManagement,settings], 2)
         return menu
     }
+
+    // Retrun the parent objet of a child pass in parametter
     getParent(findedItem) {
         let parent
 
