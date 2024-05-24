@@ -1,89 +1,12 @@
 /*
-    Les classes
+    IMPORTS
 */
-
-class Menu {
-    title
-    childsItems
-    itemSelectedByDefault
-    itemSelected
-
-    constructor(title, childsItems, itemSelectedByDefault) {
-        this.title = title
-        this.childsItems = childsItems
-        this.itemSelectedByDefault = itemSelectedByDefault
-        this.itemSelected = this.itemSelectedByDefault
-    }
-}
-class Functionality {
-    title
-
-    constructor(title) {
-        this.title = title
-    }
-}
-class Discover {
-    display
-    date
-
-    constructor(date) {
-        this.date = date
-        this.display = document.querySelector(".display")
-
-    }
-
-    show(item) {
-        if(item.constructor.name === "Menu"){
-            this.showMenu(item)
-        } else if(item.constructor.name === "Functionality"){
-            this.showFunctionality(item)
-        }
-        else {
-            throw "Parameter is not valid"
-        }
-    }
-    showMenu(item){
-        this.clearDisplay()
-        const menuTitle = document.createElement("h2")
-        menuTitle.classList.add("menu-title")
-        menuTitle.textContent = item.title
-        this.display.appendChild(menuTitle)
-        const menuContainer = document.createElement("div")
-        menuContainer.classList.add("menu-container")
-        
-        for (let index = (item.itemSelected - 2); index <= (item.itemSelected + 3); index++) {
-            if (item.childsItems[index]) {
-                const menuItem = document.createElement("p")
-                menuItem.classList.add("menu-item")
-                menuItem.classList.add("menu-item-full")
-                menuItem.textContent = item.childsItems[index].title
-                menuContainer.appendChild(menuItem)
-            } else {
-                const menuItem = document.createElement("div")
-                menuItem.classList.add("menu-item")
-                menuItem.classList.add("menu-item-empty")
-                menuContainer.appendChild(menuItem)
-            }
-        }
-        this.display.appendChild(menuContainer)
-    }
-    showFunctionality(item){
-        console.log("func");
-    }
-    clearDisplay(){
-        this.display.textContent = ""
-    }
-}
-
-
-
-
-
-
-
+import Discover from "./modules/discover.js"
+import Menu from "./modules/menu.js"
+import Functionality from "./modules/functionality.js"
 
 /*
-    Le code
+    MAIN CODE
 */
 
 
