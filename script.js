@@ -1,27 +1,4 @@
 /*
-
-
-const backBtn = document.querySelector(".btn-back")
-backBtn.addEventListener("click", openHomPage)
-function openHomPage() {
-    const homeTitle = document.createElement("h2")
-    homeTitle.classList.add("home-title")
-    homeTitle.textContent = "Ven 11:23"
-
-    const waterDromIMG = document.createElement("img")
-    waterDromIMG.src = "./Ressources/water-drop.svg"
-    waterDromIMG.classList.add("water-drop")
-    waterDromIMG.alt = "Goutte d'eau"
-
-
-    clearDisplay()
-    display.appendChild(homeTitle)
-    display.appendChild(waterDromIMG)
-
-}
-*/
-
-/*
     Les classes
 */
 
@@ -57,7 +34,6 @@ class Discover {
 
     show(item) {
         if(item.constructor.name === "Menu"){
-            //Alors on affiche un menu
             this.showMenu(item)
         } else if(item.constructor.name === "Functionality"){
             this.showFunctionality(item)
@@ -72,23 +48,24 @@ class Discover {
         menuTitle.classList.add("menu-title")
         menuTitle.textContent = item.title
         this.display.appendChild(menuTitle)
-        const listItems = document.createElement("ul")
-        listItems.classList.add("menu-list")
+        const menuContainer = document.createElement("div")
+        menuContainer.classList.add("menu-container")
         
         for (let index = (item.itemSelected - 2); index <= (item.itemSelected + 3); index++) {
-            const listItem = document.createElement("li")
             if (item.childsItems[index]) {
-                listItem.classList.add("menu-element")
-                listItem.textContent = item.childsItems[index].title
-                listItems.appendChild(listItem)
+                const menuItem = document.createElement("p")
+                menuItem.classList.add("menu-item")
+                menuItem.classList.add("menu-item-full")
+                menuItem.textContent = item.childsItems[index].title
+                menuContainer.appendChild(menuItem)
             } else {
-                listItem.classList.add("menu-element")
-                listItem.textContent = "---"
-                listItems.appendChild(listItem)
+                const menuItem = document.createElement("div")
+                menuItem.classList.add("menu-item")
+                menuItem.classList.add("menu-item-empty")
+                menuContainer.appendChild(menuItem)
             }
-            //C'est la galere pour gérer l'affichage des vide... Pk pas envisager un design avec grid....
         }
-        this.display.appendChild(listItems)
+        this.display.appendChild(menuContainer)
     }
     showFunctionality(item){
         console.log("func");
