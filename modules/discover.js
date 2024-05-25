@@ -120,7 +120,23 @@ class Discover {
         const antiLegionella = new Functionality("Anti-légionelle")
         const electricBoosterExpert = new Functionality("Appoint Électrique")
         const expertMode = new Menu("Accès Expert", [electricBoosterExpert, antiLegionella, externalPiloting, diagnostic, rescueMode, softVersion, reset], 3)
-        const instructions = new Functionality("Notice")
+
+
+
+        
+        /* Create instructions */
+        const instructionsStep1Title = document.createElement("h3")
+        instructionsStep1Title.classList.add("functionality-title")
+        instructionsStep1Title.textContent = "QR code"
+        const instructionsStep1IMG = document.createElement("img")
+        instructionsStep1IMG.classList.add("functionality-img")
+        instructionsStep1IMG.src = "../Ressources/qr-code-instructions.svg"
+        instructionsStep1IMG.alt = "QR Code à scanner pour afficher la notice"
+        const instructionsStep1Text = document.createElement("p")
+        instructionsStep1Text.classList.add("functionality-text")
+        instructionsStep1Text.textContent = "Scanner pour accéder à la notice en ligne"
+        const instructionsStep1 = new Step([instructionsStep1Title, instructionsStep1IMG, instructionsStep1Text])
+        const instructions = new Functionality("Notice", [instructionsStep1])
 
         /* Create connectivity */
         const connectivityStep1Title = document.createElement("h3")
@@ -134,9 +150,6 @@ class Discover {
         connectivityStep1Text.classList.add("functionality-text")
         connectivityStep1Text.textContent = "Code PIN"
         const connectivityStep1 = new Step([connectivityStep1Title, connectivityStep1IMG, connectivityStep1Text])
-
-
-
         const connectivity = new Functionality("Wifi / Cloud", [connectivityStep1])
 
 

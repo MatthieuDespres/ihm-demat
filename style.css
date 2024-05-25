@@ -60,6 +60,8 @@
 body {
   font-family: var(--base-font);
   background-color: var(--white);
+  /* Retirer le double tap pour zoomer cela nuit à la naviagation dans les menus. */
+  touch-action: manipulation;
 }
 
 /* Header */
@@ -207,10 +209,10 @@ header h1 {
 .functionality-title{
   font-weight: 300;
   font-size: var(--fs-20);
-  margin: 10px auto;
+  margin: 5px auto;
 }
 .functionality-img{
-  width: 60%;
+  width: 50%;
 }
 .functionality-text {
   font-size: var(--fs-18);
@@ -260,10 +262,10 @@ header h1 {
   /* Functionality */
   .functionality-title{
     font-size: var(--fs-14);
-    margin: 6px auto;
+    margin: 4px auto;
   }
   .functionality-img{
-    width: 55%;
+    width: 50%;
   }
   .functionality-text {
     font-size: var(--fs-12);
@@ -315,10 +317,10 @@ header h1 {
   /* Functionality */
   .functionality-title{
     font-size: var(--fs-11);
-    margin: 5px auto;
+    margin: 3px auto;
   }
   .functionality-img{
-    width: 50%;
+    width: 40%;
   }
   .functionality-text {
     font-size: var(--fs-11);
