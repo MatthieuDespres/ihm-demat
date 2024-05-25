@@ -32,7 +32,6 @@ class Functionality {
     mooveDown(){
     }
     ok(){
-
     }
     back(){
 

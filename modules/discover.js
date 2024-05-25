@@ -76,8 +76,14 @@ class Discover {
 
     // When of menu is pressed
     ok(){
-        this.itemShow = this.itemShow.ok()
-        this.show()
+        if(this.itemShow.constructor.name === "Menu"){
+            this.itemShow = this.itemShow.ok()
+            this.show()
+        }
+        else if(this.itemShow.constructor.name === "Functionality"){
+            console.log(this.itemShow.constructor.name);
+            this.itemShow.ok()
+        }
     }
 
     // Clear all screen content
@@ -104,26 +110,40 @@ class Discover {
 
     // Create the main menu
     createMenu() {
-        const testElec = new Functionality("Test Appoint Élec")
-        const testColdPAC = new Functionality("Test PAC en Froid")
-        const testHeatPAC = new Functionality("Test PAC en Chaud")
+        /* Create in progress */
+        const inProgressTitle = document.createElement("h3")
+        inProgressTitle.classList.add("functionality-title")
+        inProgressTitle.textContent = "En construction"
+        const inProgressIMG = document.createElement("img")
+        inProgressIMG.classList.add("functionality-img")
+        inProgressIMG.src = "../Ressources/tools.svg"
+        inProgressIMG.alt = "Patientez le temps du développement de la fonctionnalitée"
+        const inProgressText = document.createElement("p")
+        inProgressText.classList.add("functionality-text")
+        inProgressText.textContent = "Fonctionnalitée en cours de développement"
+        const inProgress = new Step([inProgressTitle, inProgressIMG, inProgressText])
+
+        /* Create Tests */
+        const testElec = new Functionality("Test Appoint Élec", [inProgress])
+        const testColdPAC = new Functionality("Test PAC en Froid", [inProgress])
+        const testHeatPAC = new Functionality("Test PAC en Chaud", [inProgress])
         const testsModes = new Menu("Modes Test", [testHeatPAC, testColdPAC, testElec], 0)
-        const error501 = new Functionality("24/05/24 - P50.1")
-        const error301 = new Functionality("24/05/24 - P30.1")
+        const error501 = new Functionality("24/05/24 - P50.1", [inProgress])
+        const error301 = new Functionality("24/05/24 - P30.1", [inProgress])
         const errorHistory = new Menu("Historique Erreurs", [error501, error301], 0)
-        const dataSystem = new Functionality("Données Système")
+        const dataSystem = new Functionality("Données Système", [inProgress])
         const diagnostic = new Menu("Diagnostic", [errorHistory, dataSystem, testsModes], 1)
-        const reset = new Functionality("Réinitialiser")
-        const softVersion = new Functionality("Version Logiciel")
-        const rescueMode = new Functionality("Mode Secours")
-        const externalPiloting = new Functionality("Pilotage Externe")
-        const antiLegionella = new Functionality("Anti-légionelle")
-        const electricBoosterExpert = new Functionality("Appoint Électrique")
+        const reset = new Functionality("Réinitialiser", [inProgress])
+        const softVersion = new Functionality("Version Logiciel", [inProgress])
+        const rescueMode = new Functionality("Mode Secours", [inProgress])
+        const externalPiloting = new Functionality("Pilotage Externe", [inProgress])
+        const antiLegionella = new Functionality("Anti-légionelle", [inProgress])
+        const electricBoosterExpert = new Functionality("Appoint Électrique", [inProgress])
         const expertMode = new Menu("Accès Expert", [electricBoosterExpert, antiLegionella, externalPiloting, diagnostic, rescueMode, softVersion, reset], 3)
 
 
 
-        
+
         /* Create instructions */
         const instructionsStep1Title = document.createElement("h3")
         instructionsStep1Title.classList.add("functionality-title")
@@ -155,26 +175,40 @@ class Discover {
 
 
 
+        /* A faire */
+        const electricBooster = new Functionality("Appoint Électrique", [inProgress])
+        const heatingRange = new Functionality("Plage de chauffe", [inProgress])
+        const dateTime = new Functionality("Date / Heure", [inProgress])
 
-        const electricBooster = new Functionality("Appoint Électrique")
-        const heatingRange = new Functionality("Plage de chauffe")
-        const dateTime = new Functionality("Date / Heure")
-        const langPt = new Functionality("Português")
-        const langPl = new Functionality("Polski")
-        const langNl = new Functionality("Nederlands")
-        const langIt = new Functionality("Italiano")
-        const langFr = new Functionality("Français")
-        const langEs = new Functionality("Español")
-        const langEn = new Functionality("English")
-        const langDe = new Functionality("Deutsch")
+
+
+        /* Create languages */
+        const langChangeIMG = document.createElement("img")
+        langChangeIMG.src = "../Ressources/checked.svg"
+        langChangeIMG.alt = "Icone de validation"
+        langChangeIMG.classList.add("checked-img")
+        const langStep1 = new Step([langChangeIMG])
+        const langPt = new Functionality("Português", [langStep1])
+        const langPl = new Functionality("Polski", [langStep1])
+        const langNl = new Functionality("Nederlands", [langStep1])
+        const langIt = new Functionality("Italiano", [langStep1])
+        const langFr = new Functionality("Français", [langStep1])
+        const langEs = new Functionality("Español", [langStep1])
+        const langEn = new Functionality("English", [langStep1])
+        const langDe = new Functionality("Deutsch", [langStep1])
         const lang = new Menu("🏴", [langDe, langEn, langEs, langFr, langIt, langNl, langPl, langPt], 3)
+
+
+
+
+
         const settings = new Menu("Paramètres", [lang, dateTime, heatingRange, electricBooster, connectivity, instructions, expertMode], 0)
-        const eco = new Functionality("ECO +")
-        const manual = new Functionality("MANUEL")
+        const eco = new Functionality("ECO +", [inProgress])
+        const manual = new Functionality("MANUEL", [inProgress])
         const instructionsManagement = new Menu("Gestion Consigne", [manual, eco], 0)
-        const boost = new Functionality("Boost")
-        const absence = new Functionality("Absence")
-        const hotWater = new Functionality("Eau Chaude")
+        const boost = new Functionality("Boost", [inProgress])
+        const absence = new Functionality("Absence", [inProgress])
+        const hotWater = new Functionality("Eau Chaude", [inProgress])
         const consumption = new Menu("Consomations", [hotWater], 0)
         const menu = new Menu("Menu", [consumption,absence,boost,instructionsManagement,settings], 2)
         return menu

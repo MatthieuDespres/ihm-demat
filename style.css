@@ -185,7 +185,7 @@ header h1 {
 }
 /* MENU */
 .menu-title {
-  font-weight: 500;
+  font-weight: 400;
   font-size: var(--fs-20);
   padding: 2px;
   background-color: var(--title-background-color);
@@ -216,6 +216,10 @@ header h1 {
 }
 .functionality-text {
   font-size: var(--fs-18);
+}
+.checked-img {
+  width: 50%;
+  margin-top: 25%;
 }
 
 /* Mobile display */
