@@ -122,7 +122,9 @@ class Discover {
         const expertMode = new Menu("Accès Expert", [electricBoosterExpert, antiLegionella, externalPiloting, diagnostic, rescueMode, softVersion, reset], 3)
         const instructions = new Functionality("Notice")
 
+        /* Create connectivity */
         const connectivityStep1Title = document.createElement("h3")
+        connectivityStep1Title.classList.add("functionality-title")
         connectivityStep1Title.textContent = "QR code"
         const connectivityStep1IMG = document.createElement("img")
         connectivityStep1IMG.src = "../Ressources/qr-code-connectivity.png"
