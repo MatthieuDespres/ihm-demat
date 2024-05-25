@@ -127,9 +127,11 @@ class Discover {
         connectivityStep1Title.classList.add("functionality-title")
         connectivityStep1Title.textContent = "QR code"
         const connectivityStep1IMG = document.createElement("img")
-        connectivityStep1IMG.src = "../Ressources/qr-code-connectivity.png"
+        connectivityStep1IMG.classList.add("functionality-img")
+        connectivityStep1IMG.src = "../Ressources/qr-code-connectivity.svg"
         connectivityStep1IMG.alt = "QR Code à scanner pour effectuer l'appairage"
         const connectivityStep1Text = document.createElement("p")
+        connectivityStep1Text.classList.add("functionality-text")
         connectivityStep1Text.textContent = "Code PIN"
         const connectivityStep1 = new Step([connectivityStep1Title, connectivityStep1IMG, connectivityStep1Text])
 
