@@ -10,6 +10,9 @@ import Step from "./Step.js"
     Manage the HMI
 */
 class Discover {
+    //Date
+    date
+
     // DOM elements
     display
    
@@ -24,9 +27,10 @@ class Discover {
     itemShow
 
     constructor() {
+        this.date = new Date()
         this.display = document.querySelector(".display")
         this.mainMenu = this.createMenu()
-        this.home = new Functionality("Ven 11:23")
+        this.home = this.createHome()
         this.itemShow = this.home
         this.show()
     }
@@ -93,19 +97,36 @@ class Discover {
 
     // Create home 
     createHome() {
-        const homeTitle = document.createElement("h2")
-        homeTitle.classList.add("home-title")
-        homeTitle.textContent = "Ven 11:23"
-
         const waterDropIMG = document.createElement("img")
         waterDropIMG.src = "../Ressources/water-drop.svg"
         waterDropIMG.classList.add("water-drop")
         waterDropIMG.alt = "Goutte d'eau"
+        const homeStep = new Step([waterDropIMG, ])
 
+        let day = this.date.getDay()
+        switch (day) {
+            case 0: day = "Dim"
+                break;
+            case 1: day = "Lun"
+                break;
+            case 2: day = "Mar"
+                break;
+            case 3: day = "Mer"
+                break;
+            case 4: day = "Jeu"
+                break;
+            case 5: day = "Ven"
+                break;
+            case 6: day = "Sam"
+                break;
+        }
+        const hours = this.date.getHours()
+        let min = this.date.getMinutes()
+        if (min <= 9) {
+            min = "0" + min
+        }
 
-        this.clearDisplay()
-        this.display.appendChild(homeTitle)
-        this.display.appendChild(waterDropIMG)
+        return new Functionality(`${day} ${hours}:${min}`, [homeStep])
     }
 
     // Create the main menu
