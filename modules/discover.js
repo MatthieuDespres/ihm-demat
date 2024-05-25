@@ -3,6 +3,7 @@
 */
 import Functionality from "./functionality.js"
 import Menu from "./menu.js"
+import Step from "./Step.js"
 
 /*
     Class Discover :
@@ -21,7 +22,6 @@ class Discover {
 
     // Item actualy show on display
     itemShow
-
 
     constructor() {
         this.display = document.querySelector(".display")
@@ -62,39 +62,27 @@ class Discover {
     // When back button is pressed
     back() {
         if(this.itemShow !== this.home) {
-            if(this.itemShow.constructor.name === "Menu") {
-                // Reset the selected item from the origin
-                this.itemShow.resetSelectedItem()
+            this.itemShow.back()
 
-                if(this.itemShow === this.mainMenu) {
-                    this.itemShow = this.home
-                    this.show()
-                }
+            if(this.itemShow === this.mainMenu) {
+                this.itemShow = this.home
+                this.show()
+            } else {
+                this.itemShow = this.getParent(this.itemShow)
+                this.show()
             }
-        }
-        if(this.itemShow !== this.home && this.itemShow !== this.mainMenu){
-            //Il faut gérer le fait de remonter au menu parent
-            this.itemShow = this.getParent(this.itemShow)
-            this.show()
         }
     }
 
     // When of menu is pressed
     ok(){
-        if(this.itemShow.constructor.name === "Menu") {
-            this.itemShow = this.openMenu()
-            this.show()
-        }
+        this.itemShow = this.itemShow.ok()
+        this.show()
     }
 
     // Clear all screen content
     clearDisplay(){
         this.display.textContent = ""
-    }
-
-    // When someon press ok on a submenu
-    openMenu(){
-        return this.itemShow.childsItems[this.itemShow.selectedItem]   
     }
 
     // Create home 
@@ -133,7 +121,24 @@ class Discover {
         const electricBoosterExpert = new Functionality("Appoint Électrique")
         const expertMode = new Menu("Accès Expert", [electricBoosterExpert, antiLegionella, externalPiloting, diagnostic, rescueMode, softVersion, reset], 3)
         const instructions = new Functionality("Notice")
-        const connectivity = new Functionality("Wifi / Cloud")
+
+        const connectivityStep1Title = document.createElement("h3")
+        connectivityStep1Title.textContent = "QR code"
+        const connectivityStep1IMG = document.createElement("img")
+        connectivityStep1IMG.src = "../Ressources/qr-code-connectivity.png"
+        connectivityStep1IMG.alt = "QR Code à scanner pour effectuer l'appairage"
+        const connectivityStep1Text = document.createElement("p")
+        connectivityStep1Text.textContent = "Code PIN"
+        const connectivityStep1 = new Step([connectivityStep1Title, connectivityStep1IMG, connectivityStep1Text])
+
+
+
+        const connectivity = new Functionality("Wifi / Cloud", [connectivityStep1])
+
+
+
+
+
         const electricBooster = new Functionality("Appoint Électrique")
         const heatingRange = new Functionality("Plage de chauffe")
         const dateTime = new Functionality("Date / Heure")

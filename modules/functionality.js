@@ -5,27 +5,41 @@
 class Functionality {
     // Title which is written at the top of the functionality
     title
+    steps = []
 
-    constructor(title) {
+    constructor(title, steps) {
         this.title = title
+        this.steps = steps
     }
 
     // Return the html elements to show
     getShowElements(){
+        const elementsToShow = []
         const menuTitle = document.createElement("h2")
         menuTitle.classList.add("menu-title")
         menuTitle.textContent = this.title
-        return [menuTitle]
+        elementsToShow.push(menuTitle)
+        if(this.steps) {
+            this.steps.forEach(step => step.elements.forEach(element => elementsToShow.push(element)))
+        }
+        return elementsToShow
+    }
+    // When we move the cursor on the top
+    mooveUp(){
     }
 
-    mooveUp(){
-        console.log("Fleche haut feature");
-    }
+    // When we move the cursor on the bottom
     mooveDown(){
-        console.log("Fleche bas feature");
+    }
+    ok(){
+
+    }
+    back(){
+
     }
 }
 export default Functionality
+
 
 
 /* DOM Home */

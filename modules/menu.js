@@ -59,7 +59,15 @@ class Menu {
             this.selectedItem += 1
         }
     }
-
+    // When whant to acces on sub menu
+    ok(){
+        return this.childsItems[this.selectedItem]
+    }
+    //When want to acces to the parent menu
+    back() {
+        // Reset the selected item from the origin
+        this.resetSelectedItem()
+    }
     // When we go to the parent menu or the home page we want reset de default position of selector
     resetSelectedItem() {
         this.selectedItem = this.itemSelectedByDefault
