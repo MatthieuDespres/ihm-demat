@@ -19,12 +19,7 @@
   --display: #3C4144;
   --title-background-color: #9ab3d2;
 
-  /* Active */
-  --active-buttons: #111120;
-
   /* Fonts */
-  --brand-font : nasalization, sans-serif;
-  --accent-font: "Montagu Slab", serif;
   --base-font: figtree, sans-serif;
   --hmi-font: obvia, sans-serif;
 
@@ -48,7 +43,6 @@
 body {
   font-family: var(--base-font);
   background-color: var(--white);
-  /* Remove mobile double tap */
   touch-action: manipulation;
 }
 /* HEADER */
@@ -149,7 +143,7 @@ header h1 {
   grid-row: 3;
 }
 @media (pointer:fine) {
-  .btn:hover, .btn:focus {
+  .btn:hover {
     outline: 2px solid var(--buttons-text);
   }
 }
