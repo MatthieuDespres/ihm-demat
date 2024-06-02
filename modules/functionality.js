@@ -11,13 +11,5 @@ class Functionality {
         elementsToShow.push(menuTitle)
         return elementsToShow
     }
-    mooveUp(){
-    }
-    mooveDown(){
-    }
-    ok(){
-    }
-    back(){
-    }
 }
 export default Functionality
