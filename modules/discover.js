@@ -1,31 +1,12 @@
-/*
-    IMPORTS
-*/
 import Functionality from "./functionality.js"
 import Menu from "./menu.js"
 import Step from "./Step.js"
-
-/*
-    Class Discover :
-    Manage the HMI
-*/
 class Discover {
-    //Date
     date
-
-    // DOM elements
     display
-   
-
-    // Menu of discover
     mainMenu
-
-    //Home page
     home
-
-    // Item actualy show on display
     itemShow
-
     constructor() {
         this.date = new Date()
         this.display = document.querySelector(".display")
@@ -34,26 +15,18 @@ class Discover {
         this.itemShow = this.home
         this.show()
     }
-
-    // Show a current item
     show() {
         this.clearDisplay()
         this.itemShow.getShowElements().forEach(element => {this.display.appendChild(element)});
     }
-
-    // When arrow up is pressed
     up() {
         this.itemShow.mooveUp()
         this.show()
     }
-
-    // When arrow down is pressed
     down() {
         this.itemShow.mooveDown()
         this.show()
     }
-
-    // When menu button is pressed
     menu() {
         if(this.itemShow === this.home) {
             this.itemShow = this.mainMenu
@@ -62,8 +35,6 @@ class Discover {
         }
         this.show()
     }
-
-    // When back button is pressed
     back() {
         if(this.itemShow !== this.home) {
             this.itemShow.back()
@@ -77,8 +48,6 @@ class Discover {
             }
         }
     }
-
-    // When of menu is pressed
     ok(){
         if(this.itemShow.constructor.name === "Menu"){
             this.itemShow = this.itemShow.ok()
@@ -89,13 +58,9 @@ class Discover {
             this.itemShow.ok()
         }
     }
-
-    // Clear all screen content
     clearDisplay(){
         this.display.textContent = ""
     }
-
-    // Create home 
     createHome() {
         const waterDropIMG = document.createElement("img")
         waterDropIMG.src = "../Ressources/water-drop.svg"
@@ -128,10 +93,26 @@ class Discover {
 
         return new Functionality(`${day} ${hours}:${min}`, [homeStep])
     }
+    // Retrun the parent objet of a child pass in parametter
+    getParent(findedItem) {
+        let parent
+        function findParent(node) {
+            if(node.childsItems){
+                for (let child of node.childsItems) {
+                    if (child === findedItem) {
+                        parent = node
+                        return
+                    }
+                    findParent(child)
+                }
+            }
+        }
+        findParent(this.mainMenu)
+        return parent
+    }
 
-    // Create the main menu
+
     createMenu() {
-        /*Split dans un fct à part*/
         /* Create in progress */
         const inProgressTitle = document.createElement("h3")
         inProgressTitle.classList.add("functionality-title")
@@ -144,7 +125,6 @@ class Discover {
         inProgressText.classList.add("functionality-text")
         inProgressText.textContent = "Fonctionnalitée en cours de développement"
         const inProgress = new Step([inProgressTitle, inProgressIMG, inProgressText])
-
         /* Create Tests */
         const testElec = new Functionality("Test Appoint Élec", [inProgress])
         const testColdPAC = new Functionality("Test PAC en Froid", [inProgress])
@@ -162,10 +142,6 @@ class Discover {
         const antiLegionella = new Functionality("Anti-légionelle", [inProgress])
         const electricBoosterExpert = new Functionality("Appoint Électrique", [inProgress])
         const expertMode = new Menu("Accès Expert", [electricBoosterExpert, antiLegionella, externalPiloting, diagnostic, rescueMode, softVersion, reset], 3)
-
-
-
-
         /* Create instructions */
         const instructionsStep1Title = document.createElement("h3")
         instructionsStep1Title.classList.add("functionality-title")
@@ -179,7 +155,6 @@ class Discover {
         instructionsStep1Text.textContent = "Scanner pour accéder à la notice en ligne"
         const instructionsStep1 = new Step([instructionsStep1Title, instructionsStep1IMG, instructionsStep1Text])
         const instructions = new Functionality("Notice", [instructionsStep1])
-
         /* Create connectivity */
         const connectivityStep1Title = document.createElement("h3")
         connectivityStep1Title.classList.add("functionality-title")
@@ -193,17 +168,10 @@ class Discover {
         connectivityStep1Text.textContent = "Code PIN"
         const connectivityStep1 = new Step([connectivityStep1Title, connectivityStep1IMG, connectivityStep1Text])
         const connectivity = new Functionality("Wifi / Cloud", [connectivityStep1])
-
-
-
-
         /* A faire */
         const electricBooster = new Functionality("Appoint Électrique", [inProgress])
         const heatingRange = new Functionality("Plage de chauffe", [inProgress])
         const dateTime = new Functionality("Date / Heure", [inProgress])
-
-
-
         /* Create languages */
         const langChangeIMG = document.createElement("img")
         langChangeIMG.src = "../Ressources/checked.svg"
@@ -219,11 +187,6 @@ class Discover {
         const langEn = new Functionality("English", [langStep1])
         const langDe = new Functionality("Deutsch", [langStep1])
         const lang = new Menu("🏴", [langDe, langEn, langEs, langFr, langIt, langNl, langPl, langPt], 3)
-
-
-
-
-
         const settings = new Menu("Paramètres", [lang, dateTime, heatingRange, electricBooster, connectivity, instructions, expertMode], 0)
         const eco = new Functionality("ECO +", [inProgress])
         const manual = new Functionality("MANUEL", [inProgress])
@@ -236,26 +199,5 @@ class Discover {
         return menu
     }
 
-    // Retrun the parent objet of a child pass in parametter
-    getParent(findedItem) {
-        let parent
-
-        function findParent(node) {
-            if(node.childsItems){
-                for (let child of node.childsItems) {
-                    if (child === findedItem) {
-                        parent = node
-                        return
-                    }
-                    findParent(child)
-                }
-            }
-        }
-        findParent(this.mainMenu)
-        return parent
-    }
 }
 export default Discover
-
-
-
