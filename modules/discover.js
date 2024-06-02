@@ -19,11 +19,15 @@ class Discover {
         this.itemShow.getShowElements().forEach(element => {this.display.appendChild(element)});
     }
     up() {
-        this.itemShow.mooveUp()
+        if (this.itemShow.constructor.name === "Menu") {
+            this.itemShow.mooveUp()
+        }
         this.show()
     }
     down() {
-        this.itemShow.mooveDown()
+        if (this.itemShow.constructor.name === "Menu") {
+            this.itemShow.mooveDown()
+        }
         this.show()
     }
     menu() {
@@ -36,8 +40,9 @@ class Discover {
     }
     back() {
         if(this.itemShow !== this.home) {
-            this.itemShow.back()
-
+            if (this.itemShow.constructor.name === "Menu"){
+                this.itemShow.back()
+            }
             if(this.itemShow === this.mainMenu) {
                 this.itemShow = this.home
                 this.show()
@@ -51,9 +56,6 @@ class Discover {
         if(this.itemShow.constructor.name === "Menu"){
             this.itemShow = this.itemShow.ok()
             this.show()
-        }
-        else if(this.itemShow.constructor.name === "Functionality"){
-            this.itemShow.ok()
         }
     }
     clearDisplay(){
