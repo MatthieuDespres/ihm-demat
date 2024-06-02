@@ -131,6 +131,7 @@ class Discover {
 
     // Create the main menu
     createMenu() {
+        /*Split dans un fct à part*/
         /* Create in progress */
         const inProgressTitle = document.createElement("h3")
         inProgressTitle.classList.add("functionality-title")
