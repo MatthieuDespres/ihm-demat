@@ -1,6 +1,3 @@
-/*
-    IMPORT
-*/
 import Discover from "./modules/discover.js"
 
 /*
