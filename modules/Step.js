@@ -1,7 +1,3 @@
-/*
-    Class Step :
-    Manage any step
-*/
 class Step {
     elements = []
 
@@ -9,5 +5,4 @@ class Step {
         this.elements = elements
     }
 }
-
 export default Step
