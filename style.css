@@ -5,7 +5,6 @@
   margin: 0;
   padding: 0;
 }
-
 :root {
   /* Colors */
   --blue-cethi: #265984;
@@ -44,27 +43,15 @@
   --fs-42: 2.625rem;
   --fs-64: 4rem;
   --fs-72: 4.5rem;
-
-  /* shadows */
-
-
-  /* gradients */
-
-
-
-  /* borders */
-
 }
-
-/* Global & utilities */
+/* GLOBAL */
 body {
   font-family: var(--base-font);
   background-color: var(--white);
-  /* Retirer le double tap pour zoomer cela nuit à la naviagation dans les menus. */
+  /* Remove mobile double tap */
   touch-action: manipulation;
 }
-
-/* Header */
+/* HEADER */
 header {
   border-bottom: 5px solid var(--blue-cethi);
   padding: 25px 0;
@@ -93,7 +80,7 @@ header h1 {
     font-size: var(--fs-26);
   }
 }
-/* Discorver */
+/* DISCOVER */
 .discover{
   max-width: 400px;
   margin: 0 auto;
@@ -133,12 +120,6 @@ header h1 {
   cursor: pointer;
   border-radius: 15px;
 }
-/* Gérer le focus et hover selon sur ordi our smartphone */
-@media (pointer:fine) {
-  .btn:hover, .btn:focus {
-    outline: 2px solid var(--buttons-text);
-  }
-}
 .btn img {
   width: 40%;
 }
@@ -167,62 +148,11 @@ header h1 {
   grid-column: 2 / 3;
   grid-row: 3;
 }
-
-
-
-
-
-
-/* HOME */
-.home-title {
-  font-weight: 500;
-  font-size: var(--fs-20);
-  padding: 2px;
+@media (pointer:fine) {
+  .btn:hover, .btn:focus {
+    outline: 2px solid var(--buttons-text);
+  }
 }
-.water-drop {
-  margin-top: 5%;
-  width: 75%;
-}
-/* MENU */
-.menu-title {
-  font-weight: 400;
-  font-size: var(--fs-20);
-  padding: 2px;
-  background-color: var(--title-background-color);
-}
-.menu-item {
-  font-size: var(--fs-20);
-  padding: 4px 2px;
-  font-weight: 200 ;
-}
-.menu-item.menu-item-full:not(:last-of-type) {
-  border-bottom: 1px solid var(--white);
-}
-.menu-item.menu-item-empty {
-  height: 33px;
-}
-.menu-item:nth-child(3){
-  background-color: var(--white);
-  color: var(--black);
-}
-/* Functionality */
-.functionality-title{
-  font-weight: 300;
-  font-size: var(--fs-20);
-  margin: 5px auto;
-}
-.functionality-img{
-  width: 50%;
-}
-.functionality-text {
-  font-size: var(--fs-18);
-}
-.checked-img {
-  width: 50%;
-  margin-top: 25%;
-}
-
-/* Mobile display */
 @media (max-width: 450px) {
   .discover{
     max-width: 300px;
@@ -246,33 +176,6 @@ header h1 {
     width: 60px;
     height: 60px;
     font-size: var(--fs-22);
-  }
-  /* Home */
-  .water-drop {
-    width: 70%;
-  }
-  /* Menu */
-  .menu-title {
-    font-weight: 400;
-    font-size: var(--fs-14);
-  }
-  .menu-item{
-    font-size: var(--fs-14);
-    padding: 2px 2px;
-  }
-  .menu-item.menu-item-empty {
-    height: 22px;
-  }
-  /* Functionality */
-  .functionality-title{
-    font-size: var(--fs-14);
-    margin: 4px auto;
-  }
-  .functionality-img{
-    width: 50%;
-  }
-  .functionality-text {
-    font-size: var(--fs-12);
   }
 }
 @media (max-width: 320px) {
@@ -301,11 +204,43 @@ header h1 {
     height: 45px;
     font-size: var(--fs-18);
   }
-  /* Home */
-  .water-drop {
-    width: 65%;
+}
+/* DISCOVER - MENU */
+.menu-title {
+  font-weight: 400;
+  font-size: var(--fs-20);
+  padding: 2px;
+  background-color: var(--title-background-color);
+}
+.menu-item {
+  font-size: var(--fs-20);
+  padding: 4px 2px;
+  font-weight: 200 ;
+}
+.menu-item.menu-item-full:not(:last-of-type) {
+  border-bottom: 1px solid var(--white);
+}
+.menu-item.menu-item-empty {
+  height: 33px;
+}
+.menu-item:nth-child(3){
+  background-color: var(--white);
+  color: var(--black);
+}
+@media (max-width: 450px) {
+  .menu-title {
+    font-weight: 400;
+    font-size: var(--fs-14);
   }
-  /* Menu */
+  .menu-item{
+    font-size: var(--fs-14);
+    padding: 2px 2px;
+  }
+  .menu-item.menu-item-empty {
+    height: 22px;
+  }
+}
+@media (max-width: 320px) {
   .menu-title {
     font-weight: 200;
     font-size: var(--fs-11);
@@ -318,15 +253,22 @@ header h1 {
   .menu-item.menu-item-empty {
     height: 17px;
   }
-  /* Functionality */
+}
+/* DISCOVER - FUNCTIONALITY */
+.functionality-title{
+  font-weight: 300;
+  font-size: var(--fs-20);
+  margin: 5px auto;
+}
+@media (max-width: 450px) {
+  .functionality-title{
+    font-size: var(--fs-14);
+    margin: 4px auto;
+  }
+}
+@media (max-width: 320px) {
   .functionality-title{
     font-size: var(--fs-11);
     margin: 3px auto;
-  }
-  .functionality-img{
-    width: 40%;
-  }
-  .functionality-text {
-    font-size: var(--fs-11);
   }
 }
